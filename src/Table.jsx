@@ -22,13 +22,26 @@ const Table = ({
   return (
     <div className="table" id={tableId} ref={tableRef}>
       <div className="table_header">
-        <div>{tableName}</div>{" "}
-        <button onClick={() => onRemove(tableId)}>x</button>
+        <div style={{ fontWeight: "bold" }}>{tableName}</div>{" "}
+        <button onClick={() => onRemove(tableId)} className="close">
+          x
+        </button>
       </div>
 
       <ul>
+        {/* Header row for Column and Data type */}
+        <li style={{ display: "flex", alignItems: "center", gap: "15px", fontWeight: "bold" }}>
+          <input type="checkbox" className="column-checkbox" checked readOnly />
+          <div style={{ display: "flex", gap: "15px", width: "100%" }}>
+            <div style={{ flex: 1 }}>Column</div>
+            <div>|</div>
+            <div style={{ flex: 1 }}>Data Type</div>
+          </div>
+        </li>
+        {/* Loop through columns and display */}
         {columns.map((column) => (
           <li
+            className="table-li"
             key={column.column_id}
             id={`${tableId}-${column.column_id}`}
             draggable
@@ -60,11 +73,16 @@ const Table = ({
             onDragOver={(e) => e.preventDefault()}
             onDragEnd={() => setConnecting(false)}
           >
-            {column.name}
+            <input type="checkbox" className="column-checkbox" checked readOnly />
+            <div style={{ display: "flex", gap: "15px", width: "100%" }}>
+              <div style={{ flex: 1 }}>{column.name}</div>
+              <div>{column.column_data_type}</div>
+            </div>
           </li>
         ))}
       </ul>
     </div>
+
   );
 };
 

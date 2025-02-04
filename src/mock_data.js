@@ -38,7 +38,7 @@ export const mockTables = [
         column_data_type: "String",
       },
       { column_id: "4_3", name: "Contract Period", column_data_type: "String" },
-      { column_id: "4_4", name: "Joined Date", column_data_type: "String" },
+      { column_id: "4_4", name: "Joined Date", column_data_type: "Date" },
       { column_id: "4_5", name: "Role", column_data_type: "String" },
       { column_id: "4_6", name: "Location", column_data_type: "String" },
     ],
@@ -48,7 +48,7 @@ export const mockTables = [
     name: "Securities",
     columns: [
       { column_id: "5_1", name: "SecuritiesName", column_data_type: "String" },
-      { column_id: "5_2", name: "SecuritiesAge", column_data_type: "String" },
+      { column_id: "5_2", name: "SecuritiesAge", column_data_type: "Number" },
       { column_id: "5_3", name: "Field Name", column_data_type: "String" },
       { column_id: "5_4", name: "Place on Demand", column_data_type: "String" },
     ],
@@ -58,7 +58,7 @@ export const mockTables = [
     name: "Business Team",
     columns: [
       { column_id: "6_1", name: "Name", column_data_type: "String" },
-      { column_id: "6_2", name: "YOE", column_data_type: "String" },
+      { column_id: "6_2", name: "YOE", column_data_type: "Date" },
       { column_id: "6_3", name: "Company Name", column_data_type: "String" },
       { column_id: "6_4", name: "Contribution", column_data_type: "String" },
     ],
@@ -68,7 +68,7 @@ export const mockTables = [
     name: "HR Teams",
     columns: [
       { column_id: "7_1", name: "Name", column_data_type: "String" },
-      { column_id: "7_2", name: "Age", column_data_type: "String" },
+      { column_id: "7_2", name: "Age", column_data_type: "Number" },
       { column_id: "7_3", name: "Location", column_data_type: "String" },
       { column_id: "7_4", name: "YOJ", column_data_type: "String" },
     ],

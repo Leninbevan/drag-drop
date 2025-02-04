@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import { Resizable } from "react-resizable";
 import Xarrow from "react-xarrows";
@@ -30,7 +30,7 @@ const App = () => {
         if (key !== tableId) {
           const pos = tablePositions[key];
           if (
-            Math.abs(adjustedPosition.x - pos.x) < 220 &&
+            Math.abs(adjustedPosition.x - pos.x) < 300 &&
             Math.abs(adjustedPosition.y - pos.y) < 290
           ) {
             isOverlapping = true;
@@ -75,10 +75,8 @@ const App = () => {
 
           for (let key in tablePositions) {
             const pos = tablePositions[key];
-
-            //        current table - dragged table
             if (
-              Math.abs(adjustedPosition.x - pos.x) < 220 &&
+              Math.abs(adjustedPosition.x - pos.x) < 300 &&
               Math.abs(adjustedPosition.y - pos.y) < 290
             ) {
               isOverlapping = true;
@@ -98,12 +96,12 @@ const App = () => {
           length: table?.columns?.length,
         }));
       } else {
-        alert("Already existing Table");
+        alert("Already existing Table!!");
       }
     }
   };
 
-  // remove conections and tables
+
   const handleRemove = (tableId) => {
     setDroppedTables((prevTables) =>
       prevTables.filter((table) => table.id !== tableId)
@@ -172,18 +170,17 @@ const App = () => {
             key={table.id}
             onStop={(e, data) => handleStop(e, data, table.id)}
             position={tablePositions[table.id]}
-            disabled={connecting} // Disable dragging if connecting
+            disabled={connecting}
             cancel={["ul"]}
           >
             <Resizable
-              width={200}
-              height={200}
+              width={300}
+              height={300}
               minConstraints={[100, 100]}
               onResizeStop={(e, data) => {
-                // Update the table position after resizing
                 handleStop(e, data, table.id);
               }}
-              draggableOpts={{ disabled: connecting }} // Disable dragging while resizing
+              draggableOpts={{ disabled: connecting }}
             >
               <div className="scrollable-table">
                 <Table
@@ -192,7 +189,7 @@ const App = () => {
                   columns={table.columns}
                   addConnection={addConnection}
                   onRemove={handleRemove}
-                  setConnecting={setConnecting} // Pass setConnecting to Table
+                  setConnecting={setConnecting}
                 />
               </div>
             </Resizable>
@@ -204,7 +201,8 @@ const App = () => {
             start={conn.start}
             end={conn.end}
             animateDrawing={1}
-            updateKey={updateArrows} // Force update on scroll
+            color="#f4ab4c"
+            updateKey={updateArrows}
             // startAnchor="right"
             // endAnchor="left"
           />
